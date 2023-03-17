@@ -21,11 +21,19 @@ class ArticleFormRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+
+        $rules = [
             'title' => 'required|max:50',
             'text' => 'required|min:10',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'required|image|mimes:jpeg,png,jpg|max:8192',
         ];
+    
+        if ($this->route()->getName() == 'articles.store') {
+            $rules['image'] = 'required|image|mimes:jpeg,png,jpg|max:8192';
+        } else {
+            $rules['image'] = 'nullable|image|mimes:jpeg,png,jpg|max:8192';
+        }
+    
+        return $rules;
     }
 }

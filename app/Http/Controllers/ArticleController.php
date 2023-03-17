@@ -25,6 +25,13 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function list()
+    {
+        $articles = Article::with(['category', 'user'])->latest()->get();
+
+        return view('articles.list', compact('articles'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

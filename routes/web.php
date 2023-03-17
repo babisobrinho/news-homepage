@@ -16,3 +16,4 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 // Articles Routes
 Route::resource('articles', ArticleController::class)->middleware('auth');
+Route::get('/articles', [ArticleController::class, 'list'])->name('list');
