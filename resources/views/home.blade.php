@@ -50,7 +50,7 @@
             <img src="{{ asset('storage/'.$techArticle->image) }}" alt="{{ $techArticle->title }}">
             <!-- 2/3 -->
             <div class="tech-content">
-            <span>01</span>
+            <span>0{{ $loop->iteration }}</span>
             <h4><a href="{{ route('articles.show', [$techArticle]) }}">{{ $techArticle->title }}</a></h4>
             <p>{{ Str::limit($techArticle->text, 100) }}</p>
             </div>
