@@ -107,11 +107,7 @@ class ArticleController extends Controller
             }
         }
 
-        $article->image = $validated['image'] ?? $article->image;
-        $article->title = $validated['title'];
-        $article->text = $validated['text'];
-
-        $article->save();
+        $article->update($validated);
 
         return redirect()
             ->route('articles.show', [$article])

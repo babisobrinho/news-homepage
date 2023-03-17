@@ -21,9 +21,11 @@ class MasterController extends Controller
         ]);
     }
 
-    public function categories() {
-
-        return view('categories');
-
+    public function categories()
+    {
+        $categories = Category::all();
+        
+        return view('categories', ['categories' => $categories]);
     }
+
 }
