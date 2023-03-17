@@ -10,7 +10,7 @@
     <div class="nav-links" id="nav-links">
     <div class="nav-container">
         <a style="{{ request()->routeIs('home') ? 'background-color: yellow;' : '' }}" href="{{ route('home') }}">Home</a>
-        <a href="#">New</a>
+        <a style="{{ request()->routeIs('list') ? 'background-color: yellow;' : '' }}" href="{{ route('list') }}">New</a>
         <a href="#">Popular</a>
         <a href="#">Trending</a>
         <a style="{{ request()->routeIs('categories') ? 'background-color: yellow;' : '' }}" href="{{ route('categories') }}">Categories</a>

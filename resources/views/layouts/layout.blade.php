@@ -14,11 +14,11 @@
 
     <div class="container">
 
+        @include('layouts._navbar')
+
         @include('partials._error')
 
         @include('partials._success')
-
-        @include('layouts._navbar')
 
         @yield('content')
 

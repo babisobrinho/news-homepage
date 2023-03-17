@@ -4,8 +4,11 @@
 
 @section('content')
 
-<!-- website content -->
-<main id="main">
+    <h1>All Articles</h1>
+
+    @auth
+    <a href="{{ route('articles.create') }}">Create New</a>
+    @endauth
 
     <ul>
         @foreach($articles as $article)
@@ -14,7 +17,5 @@
             </li>
         @endforeach
     </ul>
-
-</main>
 
 @endsection
