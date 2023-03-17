@@ -19,8 +19,8 @@
         <a class="auth-button" style="{{ request()->routeIs('login') ? 'background-color: yellow;' : '' }}" href="{{ route('login') }}">Login</a>
         @endguest
         @auth
-        <a class="auth-button" href="{{ route('logout') }}">Logout</a>
         <span>Hello, <b>{{ Auth::user()->name }}</b></span>
+        <a class="auth-button" href="{{ route('logout') }}">Logout</a>
         @endauth
     </div>
     </div>

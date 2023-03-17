@@ -31,59 +31,31 @@
 
             <!-- list of articles -->
             <ul class="new-articles">
-                @foreach($latestArticles as $article)
+                @foreach($newArticles as $newArticle)
                     <li class="new-article">
-                        <h3><a href="{{ route('articles.show', [$article]) }}">{{ $article->title }}</a></h3>
-                        <p>{{ $article->text }}</p>
+                        <h3><a href="{{ route('articles.show', [$newArticle]) }}">{{ $newArticle->title }}</a></h3>
+                        <p>{{ explode('.', $newArticle->text, 2)[0] }}</p>
                     </li>
                 @endforeach
             </ul>
         </div>
     </div>
 
-    <!-- articles -->
-    <div class="articles-section">
-        @include('partials._article')
-    </div>
-
     <!-- tech & innovation articles -->
     <div class="tech-section">
-
+        @foreach($techArticles as $techArticle)
         <!-- 1/3 | single article" -->
         <div class="tech-article">
             <!-- 1/3 -->
-            <img src="{{ @asset('images/image-retro-pcs.jpg') }}" alt="Retro PC">
+            <img src="{{ asset('storage/'.$techArticle->image) }}" alt="{{ $techArticle->title }}">
             <!-- 2/3 -->
             <div class="tech-content">
             <span>01</span>
-            <h4><a href="">Reviving Retro PCs</a></h4>
-            <p>What happens when old PCs are given modern upgrades?</p>
+            <h4><a href="{{ route('articles.show', [$techArticle]) }}">{{ $techArticle->title }}</a></h4>
+            <p>{{ Str::limit($techArticle->text, 100) }}</p>
             </div>
         </div>
-
-        <!-- 1/3 | single article" -->
-        <div class="tech-article">
-            <!-- 1/3 -->
-            <img src="{{ @asset('images/image-top-laptops.jpg') }}" alt="Laptops">
-            <!-- 2/3 -->
-            <div class="tech-content">
-            <span>02</span>
-            <h4><a href="">Top 10 Laptops of 2022</a></h4>
-            <p>Our best picks for various needs and budgets.</p>
-            </div>
-        </div>
-
-        <!-- 1/3 | single article" -->
-        <div class="tech-article">
-            <!-- 1/3 -->
-            <img src="{{ @asset('images/image-gaming-growth.jpg') }}" alt="Game Controller">
-            <!-- 2/3 -->
-            <div class="tech-content">
-            <span>03</span>
-            <h4><a href="">The Growth of Gaming</a></h4>
-            <p>How the pandemic has sparked fresh opportunities.</p>
-            </div>
-        </div>
+        @endforeach
     </div>
 
 </main>

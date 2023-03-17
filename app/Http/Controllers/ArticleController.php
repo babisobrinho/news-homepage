@@ -14,10 +14,14 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $latestArticles = Article::latest()->take(3)->get();
+        $newArticles = Article::new()->take(3)->get();
+        $techArticles = Article::where('category_id', 1)->latest()->limit(3)->get();
+        $categories = Category::all();
 
         return view('home', [
-            'latestArticles' => $latestArticles,
+            'newArticles' => $newArticles,
+            'techArticles' => $techArticles,
+            'categories' => $categories,
         ]);
     }
 
@@ -72,7 +76,9 @@ class ArticleController extends Controller
 
         $imageUrl = $article->image ? asset('storage/'.$article->image) : null;
 
-        return view('articles.edit', ['article' => $article, 'imageUrl' => $imageUrl]);
+        $categories = Category::all();
+
+        return view('articles.edit', ['article' => $article, 'imageUrl' => $imageUrl, 'categories' => $categories]);
 
     }
 
