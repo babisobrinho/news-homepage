@@ -16,6 +16,11 @@ class Article extends Model
         'category_id',
     ];
 
+    public function scopeNew($query)
+{
+    return $query->orderByDesc('created_at');
+}
+
     // one-to-many relationship
     public function user()
     {

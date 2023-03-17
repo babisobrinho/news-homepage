@@ -4,18 +4,25 @@
 
 @section('content')
 
-    <h1>All Articles</h1>
-
     @auth
-    <a href="{{ route('articles.create') }}">Create New</a>
+    <a class="button" href="{{ route('articles.create') }}">Create New</a>
     @endauth
 
-    <ul>
-        @foreach($articles as $article)
-            <li>
-                - <b><a href="{{ route('articles.show', [$article->id]) }}">{{ $article->title }}</a></b>, Category: {{ $article->category->name }}, Created by <b>{{ $article->user->name }}</b> on {{ $article->created_at->format('M d, Y') }}
-            </li>
-        @endforeach
-    </ul>
+    <div class="form-container">
+        <h1>All Articles</h1>
+
+            <ul>
+                <li>
+                    
+                </li>
+                @foreach($articles as $article)
+                    <li>
+                        - <b><a href="{{ route('articles.show', [$article->id]) }}">{{ $article->title }}</a></b>, {{ $article->category->name }}, Created by <b>{{ $article->user->name }}</b> on {{ $article->created_at->format('M d, Y') }}
+                    </li>
+                @endforeach
+            </ul>
+    </div>
+
+    
 
 @endsection

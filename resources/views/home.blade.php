@@ -12,15 +12,15 @@
 
         <!-- desktop 2/3 | mobile full | highlight -->
         <div class="highlight">
-            <img src="{{ @asset('images/image-web-3-desktop.jpg') }}" alt="Puzzles">
+            <img src="{{ asset('storage/'.$highlightedArticle->image) }}" alt="{{ $highlightedArticle->title }}">
             <div class="highlight-post">
             <!-- 1/3 -->
-            <h1>The Bright Future of Web 3.0?</h1>
+            <h1>{{ $highlightedArticle->title }}</h1>
 
             <!-- 1/3 -->
             <div class="highlight-text">
-                <p>We dive into the next evolution of the web that claims to put the power of the platforms back into the hands of the people. But is it really fulfilling its promise?</p>
-                <a href="">Read more</a>
+                <p>{{ Str::limit($highlightedArticle->text, 200) }}</p>
+                <a href="{{ route('articles.show', [$highlightedArticle]) }}">Read more</a>
             </div>
             </div>
         </div>

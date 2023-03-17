@@ -14,14 +14,20 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $newArticles = Article::new()->take(3)->get();
         $techArticles = Article::where('category_id', 1)->latest()->limit(3)->get();
         $categories = Category::all();
+        $highlightedArticle = Article::latest()->first();
+        
+        $newArticles = Article::latest()->take(4)->get()->reject(function ($article) use ($highlightedArticle) {
+            return $article->id === $highlightedArticle->id;
+        });
+        
 
         return view('home', [
             'newArticles' => $newArticles,
             'techArticles' => $techArticles,
             'categories' => $categories,
+            'highlightedArticle' => $highlightedArticle,
         ]);
     }
 

@@ -46,13 +46,62 @@ body {
     margin: 0 auto;
 }
 
+.button { /* read more button */
+    text-align: center;
+    background-color: var(--soft-red);
+    color: var(--off-white) !important;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 700;
+    cursor: pointer;
+    background-color: var(--soft-red);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+}
+
+.button:hover {
+    background-color: var(--very-dark-blue);
+}
+
+/* flash messages */
+
+.alert {
+    padding: 20px;
+    color: white;
+    margin: 0 0 2rem 0;
+}
+
+.error {
+    background-color: var(--soft-red);
+}
+
+.success {
+    background-color: var(--very-dark-blue);
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
 /* navbar */
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem 0.5rem;
-    
 }
 
 .nav-logo {
@@ -76,21 +125,8 @@ nav {
     color: var(--soft-red)
 }
 
-.auth-button { /* read more button */
-    padding: 0.25rem 0.5rem;
-    text-align: center;
-    background-color: var(--soft-red);
-    color: var(--off-white) !important;
-    border: none;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+.navActive {
     font-weight: 700;
-    cursor: pointer;
-}
-
-.auth-button:hover {
-    background-color: var(--very-dark-blue);
 }
 
 .opacity {
@@ -274,19 +310,106 @@ main {
     color: var(--very-dark-blue);
 }
 
-/* attribution */
+/* forms */
 
-footer {
+.form-container {
     display: flex;
-    flex-direction: row;
-    bottom: 0;
-    padding: 2rem;
-    justify-content: center;
-    width: 100%;
+    flex-direction: column;
+    width: 75%;
+    margin: 3rem auto;
 }
 
-footer a {
+.form-container h1 {
+    margin-bottom: 2rem;
+}
+
+input[type=text], input[type=email], input[type=password],textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 0.5rem 0 1.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+select {
+    width: 30%;
+    padding: 12px;
+    margin: 0.5rem 0 1.5rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type=file] {
+    float: right;
+    width: 50%;
+}
+
+input::file-selector-button {
+    background-color: var(--dark-grayish-blue);
+    color: var(--off-white);
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+input::file-selector-button:hover {
+    background-color: var(--grayish-blue);
+    color: var(--very-dark-blue);
+}
+
+button[type=submit] {
+    background-color: var(--soft-red);
+    color: var(--off-white);
+    padding: 12px 20px;
+    border: none;
+    float: right;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-top: 2rem;
+    width: 30%;
+}
+
+button[type=submit]:hover {
+    background-color: var(--very-dark-blue);
+}
+
+/* single article show */
+
+.single-article {
+    width: 70%;
+    margin: 2rem auto;
+}
+
+.single-article img {
+    height: fit-content;
+}
+
+.single-article span {
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--soft-orange);
+}
+
+.single-article h1 {
+    margin-top: 1rem;
+}
+
+.single-article p {
+    margin: 2rem 0;
+}
+
+.edit-button {
     text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--off-white);
+    background-color: var(--very-dark-blue);
+    padding: 1rem 1.5rem;
+}
+
+.edit-button:hover {
+    background-color: var(--soft-red);
 }
 
 /* responsive */
@@ -366,10 +489,19 @@ footer a {
         padding: 1rem;
     }
 
-    footer {
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem;
+    .form-container {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    input[type=file] {
+        float: right;
+        width: 100%;
+    }
+
+    button[type=submit] {
+        width: 50%;
+        margin: 2rem auto;
     }
 
 }

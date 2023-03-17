@@ -3,8 +3,10 @@
 @section('title', "New Account")
 
 @section('content')
+
+<div class="form-container">
+
     <h1>Register</h1>
-    <p>Create a new account</p>
     
     <form method="POST" action="{{ route('register') }}">
         @csrf
@@ -38,5 +40,6 @@
         </div>
     </form>
 
-    <span>If you have an account: <a href="{{ route('login') }}">Login</a></span>
+</div>
+
 @endsection

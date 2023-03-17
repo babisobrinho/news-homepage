@@ -9,18 +9,18 @@
     <!-- desktop left side -->
     <div class="nav-links" id="nav-links">
     <div class="nav-container">
-        <a style="{{ request()->routeIs('home') ? 'background-color: yellow;' : '' }}" href="{{ route('home') }}">Home</a>
-        <a style="{{ request()->routeIs('list') ? 'background-color: yellow;' : '' }}" href="{{ route('list') }}">New</a>
+        <a class="{{ request()->routeIs('home') ? 'navActive' : '' }}" href="{{ route('home') }}">Home</a>
+        <a class="{{ request()->routeIs('list') ? 'navActive' : '' }}" href="{{ route('list') }}">New</a>
         <a href="#">Popular</a>
         <a href="#">Trending</a>
-        <a style="{{ request()->routeIs('categories') ? 'background-color: yellow;' : '' }}" href="{{ route('categories') }}">Categories</a>
+        <a class="{{ request()->routeIs('categories') ? 'navActive' : '' }}" href="{{ route('categories') }}">Categories</a>
         @guest
-        <a class="auth-button" style="{{ request()->routeIs('register') ? 'background-color: yellow;' : '' }}" href="{{ route('register') }}">Register</a>
-        <a class="auth-button" style="{{ request()->routeIs('login') ? 'background-color: yellow;' : '' }}" href="{{ route('login') }}">Login</a>
+        <a class="button" style="{{ request()->routeIs('register') ? 'navActive' : '' }}" href="{{ route('register') }}">Register</a>
+        <a class="button" style="{{ request()->routeIs('login') ? 'navActive' : '' }}" href="{{ route('login') }}">Login</a>
         @endguest
         @auth
         <span>Hello, <b>{{ Auth::user()->name }}</b></span>
-        <a class="auth-button" href="{{ route('logout') }}">Logout</a>
+        <a class="button" href="{{ route('logout') }}">Logout</a>
         @endauth
     </div>
     </div>

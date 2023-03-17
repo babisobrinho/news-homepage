@@ -3,6 +3,8 @@
 @section('title', "Login")
 
 @section('content')
+
+<div class="form-container">
     <h1>Login</h1>
     
     <form method="POST" action="{{ route('login') }}">
@@ -22,4 +24,6 @@
             <button type="submit">Login</button>
         </div>
     </form>
+</div>
+
 @endsection
