@@ -5,7 +5,9 @@
 @section('content')
 
     <div class="single-article">
-        <img src='{{ asset("storage/$article->image") }}' alt="$article->title">
+        @if ($article->image)
+            <img src="{{ asset('storage/'.$article->image.'?'.time()) }}" alt="{{ $article->title }}">
+        @endif
         <span>
             @if ($article->category)
                 {{ $article->category->name }}

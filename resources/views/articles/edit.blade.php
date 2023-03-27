@@ -33,7 +33,7 @@
             <label for="image">Image</label>
             <div>
                 @if($imageUrl)
-                <img src="{{ $imageUrl }}" width="100">
+                <img src="{{ $imageUrl.'?'.time() }}" width="100">
                 @endif
                 <div>
                     <input type="file" name="image" id="image">

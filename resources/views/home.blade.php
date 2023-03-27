@@ -12,7 +12,7 @@
 
         <!-- desktop 2/3 | mobile full | highlight -->
         <div class="highlight">
-            <img src="{{ asset('storage/'.$highlightedArticle->image) }}" alt="{{ $highlightedArticle->title }}">
+            <img src="{{ asset('storage/'.$highlightedArticle->image.'?'.time()) }}" alt="{{ $highlightedArticle->title }}">
             <div class="highlight-post">
             <!-- 1/3 -->
             <h1>{{ $highlightedArticle->title }}</h1>
@@ -47,7 +47,7 @@
         <!-- 1/3 | single article" -->
         <div class="tech-article">
             <!-- 1/3 -->
-            <img src="{{ asset('storage/'.$techArticle->image) }}" alt="{{ $techArticle->title }}">
+            <img src="{{ asset('storage/'.$techArticle->image.'?'.time()) }}" alt="{{ $techArticle->title }}">
             <!-- 2/3 -->
             <div class="tech-content">
             <span>0{{ $loop->iteration }}</span>
