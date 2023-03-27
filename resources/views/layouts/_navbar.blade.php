@@ -2,7 +2,7 @@
 <nav>
     <!-- desktop right side -->
     <div class="nav-logo" id="nav-logo">
-        <a href="#">
+        <a href="{{ route('home') }}">
             <img src="{{ @asset('images/logo.svg') }}" alt="Logo">
         </a>
     </div>
