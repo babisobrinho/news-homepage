@@ -8,22 +8,14 @@ use App\Models\Article;
 use App\Models\Category;
 use App\Policies\ArticlePolicy;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Controllers\MasterController;
 
 class ArticleController extends Controller
 {
 
     public function index()
     {
-        $techArticles = Article::where('category_id', 1)->latest()->limit(3)->get();
-        $categories = Category::all();
-        $highlightedArticle = Article::latest()->first();
-        
-        $newArticles = Article::latest()->take(4)->get()->reject(function ($article) use ($highlightedArticle) {
-            return $article->id === $highlightedArticle->id;
-        });
-        
-
-        return view('home', [
+        return app(MasterController::class)->home([
             'newArticles' => $newArticles,
             'techArticles' => $techArticles,
             'categories' => $categories,
@@ -59,7 +51,10 @@ class ArticleController extends Controller
         $article = $request->user()->articles()->create($validated);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/articles-images');
+            $imagePath = $request->file('image')->storeAs(
+                'public/articles-images',
+                'article' . $article->id . '.' . $request->file('image')->getClientOriginalExtension()
+            );
             $article->image = str_replace('public/', '', $imagePath);
             $article->save();
         }
@@ -105,12 +100,14 @@ class ArticleController extends Controller
         $validated = $request->validated();
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('public/articles-images');
-            $validated['image'] = str_replace('public/', '', $imagePath);
-
             if ($article->image) {
                 Storage::delete('public/' . $article->image);
             }
+            $imagePath = $request->file('image')->storeAs(
+                'public/articles-images',
+                'article' . $article->id . '.' . $request->file('image')->getClientOriginalExtension()
+            );
+            $validated['image'] = str_replace('public/', '', $imagePath);
         }
 
         $article->update($validated);
