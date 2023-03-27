@@ -34,7 +34,7 @@
                 @foreach($newArticles as $newArticle)
                     <li class="new-article">
                         <h3><a href="{{ route('articles.show', [$newArticle]) }}">{{ $newArticle->title }}</a></h3>
-                        <p>{{ explode('.', $newArticle->text, 2)[0] }}</p>
+                        <p>{{ Str::limit($newArticle->text, 55) }}</p>
                     </li>
                 @endforeach
             </ul>
@@ -52,7 +52,7 @@
             <div class="tech-content">
             <span>0{{ $loop->iteration }}</span>
             <h4><a href="{{ route('articles.show', [$techArticle]) }}">{{ $techArticle->title }}</a></h4>
-            <p>{{ Str::limit($techArticle->text, 100) }}</p>
+            <p>{{ Str::limit($techArticle->text, 55) }}</p>
             </div>
         </div>
         @endforeach

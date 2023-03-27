@@ -30,7 +30,8 @@ ul {
 }
 
 img {
-    max-width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 body {
@@ -165,6 +166,11 @@ main {
     grid-row: 1 span;
 }
 
+.highlight img {
+    width: 720px;
+    height: 300px;
+}
+
 .highlight-post {
     display: flex;
     justify-content: space-between;
@@ -283,6 +289,7 @@ main {
 
 .tech-article img {
     width: 100px;
+    height: 125px;
 }
 
 .tech-content {
@@ -450,7 +457,7 @@ button[type=submit]:hover {
       display: flex;
     }
   
-    .nav-links a, span {
+    .nav-links a, .nav-links span {
         display: block;
         margin: 1.5rem 0;
         padding: 0 2rem;
@@ -472,6 +479,11 @@ button[type=submit]:hover {
 
     .highlight {
         gap: 1rem;
+    }
+
+    .highlight img {
+        width: 350px;
+        height: 400px;
     }
 
     .highlight-post {
