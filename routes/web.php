@@ -5,7 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterController;
 use App\Http\Controllers\ArticleController;
 
-// Master Routes
+// master routes
 Route::get('/', [MasterController::class, 'home'])->name('home');
 Route::get('/categories', [MasterController::class, 'categories'])->name('categories');
 
@@ -16,4 +16,5 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout')->middle
 
 // Articles Routes
 Route::resource('articles', ArticleController::class)->middleware('auth');
+Route::resource('articles', ArticleController::class)->except('show');
 Route::get('/articles', [ArticleController::class, 'list'])->name('list');
