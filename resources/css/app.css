@@ -466,6 +466,11 @@ button[type=submit]:hover {
         color: var(--very-dark-blue)
     }
 
+    .nav-links a.button {
+        padding: 1rem;
+        margin: 0.5rem 2rem;
+    }
+
     .menu {
         display: flex;
     }
